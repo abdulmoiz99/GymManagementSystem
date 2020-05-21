@@ -18,26 +18,26 @@ namespace GymManagement
         public string email { get; set; }
         public string imageAddress { get; set; }
 
-        Plan plan;
+        public string plan { get; set; }
 
         public double subFee = 50;
         public double VAT = 0.23; // 23%
-        public Member(int ID, string name, string surname, string phoneNo, string address, string email, string ImageAddress)
+        public Member(int ID, string name, string surname, string phoneNo, string address, string email, string plan,string total, string ImageAddress)
         {
             this.Id = GenerateID();
-            AddMember(ID, name, surname, phoneNo, address, email, ImageAddress);
+            AddMember(ID, name, surname, phoneNo, address, email, plan,total, ImageAddress);
         }
-        public void AddMember(int ID, string name, string surname, string phoneNo, string address, string email, string ImageAddress)
+        public void AddMember(int ID, string name, string surname, string phoneNo, string address, string email, string plan, string total, string ImageAddress)
         {
-            File.AppendAllText(Application.StartupPath + @"\Data\Members.txt", ID + "\t" + name + "\t" + surname + "\t" + phoneNo + "\t" + address + "\t" + email + "\t" + ImageAddress);
+            File.AppendAllText(Application.StartupPath + @"\Data\Members.txt", ID + "\t" + name + "\t" + surname + "\t" + phoneNo + "\t" + address + "\t" + email + "\t" + plan + "\t" + total + "\t" + ImageAddress);
             MessageBox.Show("Record Added Successfully");
-        }
+        }   
         public static int GenerateID()
         {
             string[] clients = File.ReadAllLines(Application.StartupPath + @"\Data\Members.txt");
-            if (clients.Length >0)
+            if (clients.Length > 0)
             {
-                string[] subset = clients[clients.Length-1].Split('\t');
+                string[] subset = clients[clients.Length - 1].Split('\t');
                 int id = int.Parse(subset[0]);
                 return id + 1;
             }

@@ -48,11 +48,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.lbl_Fee = new System.Windows.Forms.Label();
             this.lbl_VAT = new System.Windows.Forms.Label();
             this.lbl_Total = new System.Windows.Forms.Label();
             this.btn_Add = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.txt_SubFee = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,7 +220,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(27, 536);
+            this.label9.Location = new System.Drawing.Point(27, 506);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(132, 18);
             this.label9.TabIndex = 16;
@@ -245,16 +245,6 @@
             this.label11.Size = new System.Drawing.Size(46, 18);
             this.label11.TabIndex = 18;
             this.label11.Text = "Total:";
-            // 
-            // lbl_Fee
-            // 
-            this.lbl_Fee.AutoSize = true;
-            this.lbl_Fee.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Fee.Location = new System.Drawing.Point(172, 536);
-            this.lbl_Fee.Name = "lbl_Fee";
-            this.lbl_Fee.Size = new System.Drawing.Size(37, 18);
-            this.lbl_Fee.TabIndex = 19;
-            this.lbl_Fee.Text = "N/A";
             // 
             // lbl_VAT
             // 
@@ -298,16 +288,25 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
+            // txt_SubFee
+            // 
+            this.txt_SubFee.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_SubFee.Location = new System.Drawing.Point(175, 501);
+            this.txt_SubFee.Name = "txt_SubFee";
+            this.txt_SubFee.Size = new System.Drawing.Size(231, 27);
+            this.txt_SubFee.TabIndex = 22;
+            this.txt_SubFee.TextChanged += new System.EventHandler(this.txt_SubFee_TextChanged);
+            // 
             // frm_AddMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.txt_SubFee);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.lbl_Total);
             this.Controls.Add(this.lbl_VAT);
-            this.Controls.Add(this.lbl_Fee);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -361,10 +360,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lbl_Fee;
         private System.Windows.Forms.Label lbl_VAT;
         private System.Windows.Forms.Label lbl_Total;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.TextBox txt_SubFee;
     }
 }

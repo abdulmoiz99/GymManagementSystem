@@ -12,7 +12,7 @@ namespace GymManagement
 {
     public partial class frm_AddMember : Form
     {
-        string ImagePath;
+        string ImagePath="";
         public frm_AddMember()
         {
             InitializeComponent();
@@ -37,12 +37,74 @@ namespace GymManagement
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-
-        }
+            if (txt_Name.Text == "")
+            {
+                MessageBox.Show("Enter Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_Surname.Text == "")
+            {
+                MessageBox.Show("Enter Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_Phone.Text == "")
+            {
+                MessageBox.Show("Enter Phone No", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_Email.Text == "")
+            {
+                MessageBox.Show("Enter Email", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_Address.Text == "")
+            {
+                MessageBox.Show("Enter Address", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cmb_Plan.SelectedIndex < 0)
+            {
+                MessageBox.Show("Select Plan", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_SubFee.Text == "")
+            {
+                MessageBox.Show("Enter Subscription Fee", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Member member = new Member(int.Parse(lbl_ID.Text), txt_Name.Text, txt_Surname.Text, txt_Phone.Text, txt_Address.Text, txt_Email.Text, cmb_Plan.Text, lbl_Total.Text, ImagePath);
+                AllClear();
+            }
+        } 
 
         private void frm_AddMember_Activated(object sender, EventArgs e)
         {
             lbl_ID.Text = Member.GenerateID().ToString();
+            Plan.FillCombo(cmb_Plan);
+        }
+
+        private void txt_SubFee_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                float subFee, vat=0;
+                if (float.TryParse(txt_SubFee.Text, out subFee))
+                {
+                    vat = (subFee * 14 / 100);
+                }
+                lbl_VAT.Text =Convert.ToString(vat);
+                lbl_Total.Text = Convert.ToString(subFee + vat);
+            }
+            catch (Exception)
+            {
+
+            }
+           
+        }
+        private void AllClear()
+        {
+            txt_Name.Text = "";
+            txt_Surname.Text = "";
+            txt_Phone.Text = "";
+            txt_Email.Text = "";
+            txt_Address.Text = "";
+            txt_SubFee.Text = "";
+            cmb_Plan.SelectedIndex = 0;
         }
     }
 }

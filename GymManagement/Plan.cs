@@ -25,7 +25,15 @@ namespace GymManagement
             File.AppendAllText(Application.StartupPath+  @"\Data\Plan.txt", name + "\t" + discountRate + "\t" + startDate + "\t" + endDate + "\t" + duration + Environment.NewLine);
             MessageBox.Show("Record Added Successfully");
         }
-
+        public static void FillCombo(ComboBox comboBox)
+        {
+            string[] lineOfContents = File.ReadAllLines(Application.StartupPath + @"\Data\Plan.txt");
+            foreach (var line in lineOfContents)
+            {
+                string[] tokens = line.Split('\t');
+                comboBox.Items.Add(tokens[0]);
+            }
+        }
 
     }
 }
